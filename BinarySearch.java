@@ -1,47 +1,28 @@
-package com.TrX;
-
-//Program on BinarySearch  #Day1of100DaysOfCoding
-public class BinarySearch {
-
-    public static void main(String[] args) {
-
-        int[] arr1 = {1, 2, 4, 5, 6, 7, 8, 9};
-        int key = 8;
-        int last = arr1.length - 1;
-        binarySearch(arr1, 0, last, key);
-    }
-//     public static void binarySearch(int[] arr, int first, int last, int key) {
-//         int mid = (first+last)/2;
-//         while(first<=last){
-//             if(arr[mid]==key){
-//                 System.out.println("Element found at index :"+mid);
-//                 break;
-//             }
-//             else if(arr[mid]<key){
-//                 first=mid+1;
-//             }
-//             else{
-//                 last=mid-1;
-//             }
-//             mid=(first+last)/2;
-//         }
-    public static void binarySearch(int[] arr, int first, int last, int key) {
-        int mid = (first+last)/2;
-        while(first<=last){
-            if(arr[mid]==key){
-                System.out.println("Element found at index :"+mid);
-                break;
+class BinarySearch{
+    static void BinarySearching(int []Array,int Target,int start,int end){
+        if(start<=end){
+            int mid=(start+end)/2;
+            if(Array[mid]==Target){
+                System.out.println("\nTarget "+Target+ " Found at "+mid);
+            
             }
-            else if(arr[mid]<key){
-                first=mid+1;
+            else if(Array[mid]>=Target){
+                    BinarySearching(Array,Target,start,mid-1);
             }
-            else{
-                last=mid-1;
+            else if(Array[mid]<=Target){
+                    BinarySearching(Array,Target,mid+1,end);
             }
-            mid=(first+last)/2;
+                
         }
-        if(first>last){
-            System.out.println("Element not Found");
+        else{
+            System.out.println("\nTarget "+Target+" is Not Present");
         }
     }
+    public static void main(String[] args){
+        int []Array={12,34,45,46,47,48,49,50};
+        int Target=500;
+        BinarySearching(Array,Target,0,Array.length-1);
+
+    }
+ 
 }
